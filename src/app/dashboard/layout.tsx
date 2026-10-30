@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Sidebar } from "@/components/layout/sidebar";
 
 interface DashboardLayoutProps {
@@ -10,7 +11,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       className='flex flex-row min-h-[calc(100vh-2rem)] border-4 border-blue-500 rounded-xl m-4
       overflow-hidden'
     >
-      <Sidebar />
+      <Suspense fallback={<aside className='w-64 bg-blue-50 border-r border-blur-100' />}>
+        <Sidebar />
+      </Suspense>
       <main className='flex-1 flex flex-col bg-white p-8'>{children}</main>
     </div>
   );
